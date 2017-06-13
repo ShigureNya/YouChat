@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/chat_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+    <ImageView
+        android:id="@+id/chat_item_user_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/admin"
+        android:layout_alignParentRight="true"/>
+    <me.himanshusoni.chatmessageview.ChatMessageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cmv_arrowMargin="7dp"
+        app:cmv_arrowGravity="start"
+        app:cmv_arrowPosition="right"
+        app:cmv_backgroundColor="@color/colorPrimary"
+        app:cmv_backgroundColorPressed="@color/colorPrimaryDark"
+        app:cmv_contentPadding="0dp"
+        app:cmv_cornerRadius="10dp"
+        app:cmv_showArrow="true"
+        android:layout_toLeftOf="@id/chat_item_user_image"
+        android:layout_marginLeft="5dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <ImageView
+                android:id="@+id/chat_item_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#aaffffff"
+                android:src="@mipmap/admin"
+                android:contentDescription="@string/chat_message_left_text"
+                android:visibility="gone"
+                android:padding="7dp"/>
+            <TextView
+                android:id="@+id/chat_item_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="250dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/iconTextColor"
+                android:textSize="@dimen/chat_send_button_size"
+                android:text="内容部分"
+                android:gravity="right"
+                android:padding="16dp"/>
+        </LinearLayout>
+    </me.himanshusoni.chatmessageview.ChatMessageView>
+</RelativeLayout>
+
+    <!--
+    cmv_arrowMargin:
+    控制箭头边缘。如果cmv_arrowPosition是left或right它控制顶部和底部边距。
+    否则它控制左边距和右边距
+
+    cmv_contentPadding:
+    调整框内的内容填充。
+
+    cmv_backgroundColor:
+    设置ChatMessageView正常模式的背景颜色，包括箭头。
+
+    cmv_arrowGravity:
+    控制箭头的相对位置。可能的值是start，end和center。默认是left。
+
+    cmv_arrowPosition:
+    控制盒子外的箭头。可能的值是right，left，top和bottom。默认是left。
+
+    cmv_showArrow:
+    显示或隐藏箭头
+
+    cmv_cornerRadius:
+    设置方框的拐角半径。
+
+    cmv_backgroundColorPressed:
+    设置ChatMessageView包括箭头在内的按下模式的背景颜色。
+    -->

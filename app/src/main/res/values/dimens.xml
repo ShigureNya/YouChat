@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_height">?attr/actionBarSize</dimen>
+    <dimen name="toolbar_center_title_size">19sp</dimen>
+
+    <dimen name="default_edit_height">42dp</dimen>
+    <dimen name="default_main_text_size">19sp</dimen>
+    <dimen name="default_second_text_size">13sp</dimen>
+    <dimen name="chat_send_button_size">15sp</dimen>
+    <dimen name="chat_function_logo_size">25dp</dimen>
+    <dimen name="navigation_item_size">14sp</dimen>
+</resources>

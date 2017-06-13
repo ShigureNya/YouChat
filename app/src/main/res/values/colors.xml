@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Material Design Color-->
+    <color name="colorPrimary">#3198F1</color>
+    <color name="colorPrimaryDark">#2485d8</color>
+    <color name="colorAccent">#2895f1</color>
+    <color name="mainTextColor">#313233</color>
+    <color name="secondTextColor">#9ca4a9</color>
+    <color name="thirdTexztColor">#b1bac1</color>
+    <color name="iconTextColor">#ffffff</color>
+    <color name="defaultBackgroundColor">#F6F7F8</color>
+    <color name="defaultLineColor">#c2cbd1</color>
+    <color name="notEditColor">#dddee1</color>
+    <color name="chatFunctionsLogoColor">#828493</color>
+    <color name="chatFunctionsFragmentColor">#BFC0C4</color>
+    <!--登录颜色-->
+    <color name="login_quick_logo_color">#6b7989</color>
+    <color name="login_edit_drawable_color">#919191</color>
+    <!--颜色-->
+    <color name="light_green">#7ee9bb</color>
+    <color name="light_blue">#2da4fb</color>
+    <color name="blue">#5596e7</color>
+    <color name="light_origin">#fb9d38</color>
+    <color name="light_yellow">#fdd044</color>
+    <color name="light_red">#fd696a</color>
+    <!-- 聊天颜色 -->
+    <color name="chat_other_color">#30d5aa</color>
+    <color name="chat_mine_color">#5895d4</color>
+    <color name="chat_mine_click_color">#4579ad</color>
+    <color name="chat_other_click_color">#28ad8a</color>
+    <color name="chat_default_background_color">#f6fafb</color>
+    <color name="chat_functions_background_color">#f1f2f7</color>
+
+    <!--NavigationColor-->
+    <color name="navigation_item_color">#8a8a8a</color>
+</resources>

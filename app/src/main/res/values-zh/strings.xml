@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--App信息-->
+    <string name="app_name">友信</string>
+    <string name="copyright">Copyright © 2012<a>-</a>2017 南京云易信息科技有限公司出品</string>
+    <!--登录-->
+    <string name="login_input_account_hint">请输入手机号码</string>
+    <string name="login_input_password_hint">请输入密码</string>
+    <string name="login_button_text">登 录</string>
+    <string name="login_forget_password_text">忘记密码?</string>
+    <string name="login_sign_text">注册</string>
+    <string name="login_quick_login">快速登录</string>
+    <string name="login_input_error">帐号或密码错误，请重试</string>
+    <string name="login_phone_error">请输入手机号码后再试</string>
+    <string name="login_password_error">请输入密码后再试</string>
+    <!--注册-->
+    <string name="sign_text">注 册</string>
+    <string name="sign_input_phone_number_hint">请输入11位手机号码</string>
+    <string name="sign_input_phone_code_hint">请输入6位短信验证码</string>
+    <string name="sign_get_phone_code_button_text">获取验证码</string>
+    <string name="sign_wait_phone_code_button_text">验证码已发送</string>
+    <string name="sign_input_password_hint">请输入6<a>-</a>12位密码,建议数字加字母组成</string>
+    <string name="sign_button_text">注 册</string>
+    <string name="sign_disclaimer_text">注册即代表同意 <a href="http://121.41.82.6">服务条款</a> 和 <a href="http://121.41.82.6">隐私条款</a></string>
+    <string name="sign_input_phone_error">请输入手机号码后重试</string>
+    <string name="sign_input_code_error">请输入验证码后重试</string>
+    <string name="sign_input_password_error">请输入密码后重试</string>
+    <string name="sign_complate">注册成功</string>
+    <string name="sign_error">注册失败，请检查手机号或密码后重试</string>
+    <string name="sign_code_error">注册失败，请检查验证码是否正确</string>
+    <string name="sign_complate_title">注册中</string>
+    <string name="sign_complate_content">正在向服务器发送确认信息，请稍候</string>
+    <!--忘记密码-->
+    <string name="forget_text">忘记密码</string>
+    <string name="forget_change_text">修改密码</string>
+    <string name="forget_input_phone_number_hint">请输入注册时使用的手机号码</string>
+    <string name="forget_input_phone_code_hint">请输入6位短信验证码</string>
+    <string name="forget_get_phone_code_button_text">获取验证码</string>
+    <string name="forget_wait_phone_code_button_text">验证码已发送</string>
+    <string name="forget_next_button_text">下一步</string>
+    <string name="forget_input_new_password_hint">请输入6<a>-</a>12位新密码</string>
+    <string name="forget_reinput_new_password_hint">请再输入一次</string>
+    <string name="forget_confirm_changes_button_text">确认修改</string>
+    <string name="forget_input_phone_error">手机号不能为空</string>
+    <string name="forget_input_code_error">验证码不能为空</string>
+    <string name="forget_check_error">手机号验证失败，请核对后再试</string>
+    <string name="forget_change_complate">密码修改成功</string>
+    <string name="forget_change_error">密码修改失败</string>
+    <string name="forget_new_password_error">两次密码输入错误</string>
+    <string name="forget_input_password_error">密码不能为空</string>
+    <!--主页-->
+    <string name="index_title_text">友信</string>
+    <string name="index_menu_add_friend_text">添加好友</string>
+    <string name="index_menu_add_group_text">添加群</string>
+    <string name="index_menu_qrcode_text">扫一扫</string>
+    <!--主页会话-->
+    <string name="index_conversation_title_text">会话</string>
+    <string name="index_conversation_time_yesterday_text">昨天</string>
+    <string name="index_conversation_time_before_yesterday_text">前天</string>
+    <string name="index_conversation_del_text">删除</string>
+    <!--主页好友-->
+    <string name="index_friend_title_text">好友</string>
+    <string name="idnex_friend_group_title">群组</string>
+    <string name="index_friend_group_piece_text">个</string>
+    <!--主页动态-->
+    <string name="index_dynamic_title_text">动态</string>
+    <string name="index_dynamic_before_hour">小时前</string>
+    <!-- 添加好友 -->
+    <string name="add_friend_title_text">添加好友</string>
+    <string name="add_friend_search_hint">输入用户手机号码查找</string>
+    <string name="add_friend_search_btn_text">搜索</string>
+    <string name="add_friend_search_add_btn_text">添加</string>
+    <string name="add_friend_search_info_btn_text">详细信息</string>
+    <array name="menu_array">
+        <item>@string/index_conversation_title_text</item>
+        <item>@string/index_friend_title_text</item>
+        <item>@string/index_dynamic_title_text</item>
+    </array>
+    <string name="check_user_info">确认用户信息</string>
+    <string name="connect_error">连接通讯服务器失败</string>
+    <string name="network_error">当前网络不可用，请检查网络设置</string>
+    <!--聊天界面-->
+    <string name="chat_send_button_text">发送</string>
+    <string name="chat_menu_phone_text">通话</string>
+    <string name="chat_menu_person_text">个人</string>
+    <string name="chat_message_left_text">左边的图像</string>
+    <string name="chat_message_right_text">右边的图像</string>
+    <string name="chat_voice_hold_down_text">按住说话</string>
+    <string name="chat_voice_hold_up_text">松开发送</string>
+    <!--个人中心-->
+    <string name="navigation_menu_file">我的文件</string>
+    <string name="navigation_menu_picture">我的相册</string>
+    <string name="navigation_menu_contact">我的名片</string>
+    <string name="navigation_menu_qrcode">我的二维码</string>
+    <string name="navigation_menu_setting">设置</string>
+</resources>

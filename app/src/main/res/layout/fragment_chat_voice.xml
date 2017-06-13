@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/defaultBackgroundColor">
+    <ImageButton
+        android:id="@+id/chat_voice_send_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/chat_voice_btn_not_click_drawable"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_centerInParent="true"
+        android:src="@drawable/vector_drawable_chat_voice_btn_logo"
+        />
+    <TextView
+        android:id="@+id/chat_voice_state_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chat_voice_hold_down_text"
+        android:layout_above="@id/chat_voice_send_btn"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/secondTextColor"
+        android:layout_marginBottom="10dp"
+        android:textSize="@dimen/chat_send_button_size"/>
+
+    <TextView
+        android:id="@+id/chat_voice_duration_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/chat_voice_send_btn"
+        android:layout_centerVertical="true"
+        android:textSize="19sp"
+        android:textColor="@color/secondTextColor"
+        android:layout_marginLeft="50dp"/>
+</RelativeLayout>

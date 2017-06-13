@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/friend_footer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@color/defaultLineColor">
+    <TextView
+        android:id="@+id/friend_footer_num"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/default_main_text_size"
+        android:textColor="@color/iconTextColor"
+        android:gravity="center"
+        android:text="共有15人"/>
+</LinearLayout>

@@ -1,0 +1,89 @@
+<resources>
+    <string name="copyright">Copyright © 2012<a>-</a>2017 Nanjing.Winary Internet Company</string>
+    <!--登录-->
+    <string name="login_input_account_hint">Please enter the phone number</string>
+    <string name="login_input_password_hint">Please enter your password</string>
+    <string name="login_button_text">Login</string>
+    <string name="login_forget_password_text">Forget Password?</string>
+    <string name="login_sign_text">Sign</string>
+    <string name="login_quick_login">Quick Login</string>
+    <string name="login_input_error">account or password error</string>
+    <string name="login_phone_error">Please enter your phone number and try again</string>
+    <string name="login_password_error">Please enter your password and try again</string>
+    <!--注册-->
+    <string name="sign_text">Sign</string>
+    <string name="sign_input_phone_number_hint">Please enter 11 digit phone numbers</string>
+    <string name="sign_input_phone_code_hint">Please enter 6 digit SMS verification codes</string>
+    <string name="sign_get_phone_code_button_text">get verification code</string>
+    <string name="sign_wait_phone_code_button_text">The verification code has been sent</string>
+    <string name="sign_input_password_hint">Please enter the 6<a>-</a>12 digit password, the proposed number plus letters</string>
+    <string name="sign_button_text">Sign</string>
+    <string name="sign_input_phone_error">Please enter your phone number</string>
+    <string name="sign_input_code_error">Please enter your phone code</string>
+    <string name="sign_input_password_error">Please enter your password</string>
+    <string name="sign_complate">Sign complate</string>
+    <string name="sign_error">Sign error</string>
+    <string name="sign_disclaimer_text">Signed on behalf of the <a href="http://121.41.82.6"> Terms of Service </a> and the <a href="http://121.41.82.6"> Privacy Policy</a></string>
+    <string name="sign_complate_title">Signing</string>
+    <string name="sign_code_error">Sign failed, please check the verification code is correct</string>
+    <string name="sign_complate_content">Please send a confirmation message to the server. Please wait</string>
+    <!--忘记密码-->
+    <string name="forget_text">Forget Password</string>
+    <string name="forget_change_text">Change Password</string>
+    <string name="forget_input_phone_number_hint">Please enter the number of the mobile phone used for registration</string>
+    <string name="forget_input_phone_code_hint">Please enter 6 digit SMS verification codes</string>
+    <string name="forget_get_phone_code_button_text">get verification code</string>
+    <string name="forget_wait_phone_code_button_text">The verification code has been sent</string>
+    <string name="forget_next_button_text">Next</string>
+    <string name="forget_input_new_password_hint">Please enter 6 <a> - </a> 12 digit new passwords</string>
+    <string name="forget_reinput_new_password_hint">Please enter it again</string>
+    <string name="forget_confirm_changes_button_text">Confirm Change Password</string>
+    <!--主页-->
+    <string name="index_title_text">You Chat</string>
+    <string name="index_menu_add_friend_text">Add Friends</string>
+    <string name="index_menu_add_group_text">Add Groups</string>
+    <string name="index_menu_qrcode_text">Scan</string>
+    <!--主页会话-->
+    <string name="index_conversation_title_text">Chat</string>
+    <string name="index_conversation_time_yesterday_text">Yesterday</string>
+    <string name="index_conversation_time_before_yesterday_text">Before Yesterday</string>
+    <string name="index_conversation_del_text">Delete</string>
+    <!--主页好友-->
+    <string name="index_friend_title_text">Friends</string>
+    <string name="index_friend_group_piece_text">piece</string>
+
+    <!--主页动态-->
+    <string name="index_dynamic_title_text">Dynamic</string>
+    <string name="index_dynamic_before_hour">Before Hour</string>
+    <string name="check_user_info">User Information Checking</string>
+    <string name="add_friend_search_add_btn_text">Add</string>
+    <string name="add_friend_search_btn_text">Search</string>
+    <string name="add_friend_search_info_btn_text">Info</string>
+    <string name="add_friend_search_hint">Enter user phone number lookup</string>
+    <string name="add_friend_title_text">Add Friend</string>
+    <string name="app_name">YouChat</string>
+    <string name="connect_error">Connection Failed</string>
+    <string name="forget_change_complate">Password change success</string>
+    <string name="forget_change_error">Password change failed</string>
+    <string name="forget_check_error">Phone check failed</string>
+    <string name="forget_input_code_error">The verification code cannot be null</string>
+    <string name="forget_input_password_error">The password cannot be null</string>
+    <string name="forget_input_phone_error">The phone cannot be null</string>
+    <string name="forget_new_password_error">The password enter error</string>
+    <string name="idnex_friend_group_title">Group</string>
+    <string name="network_error">The network is unavailable</string>
+    <!--聊天界面-->
+    <string name="chat_send_button_text">Send</string>
+    <string name="chat_menu_phone_text">Phone</string>
+    <string name="chat_menu_person_text">Person</string>
+    <string name="chat_message_left_text">Left image</string>
+    <string name="chat_message_right_text">Right image</string>
+    <string name="chat_voice_hold_down_text">Hold down speak</string>
+    <string name="chat_voice_hold_up_text">Hold up send</string>
+    <!--个人中心-->
+    <string name="navigation_menu_file">My files</string>
+    <string name="navigation_menu_picture">My pictures</string>
+    <string name="navigation_menu_contact">My contacts</string>
+    <string name="navigation_menu_qrcode">My QR code</string>
+    <string name="navigation_menu_setting">Setting</string>
+</resources>

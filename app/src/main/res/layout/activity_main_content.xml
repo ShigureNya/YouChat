@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/defaultBackgroundColor">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/main_content_toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/main_content_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:popupTheme="@style/ToolbarPopupTheme"
+                app:navigationIcon="@drawable/vector_drawable_main_drawer_logo"
+                app:contentInsetStart="0dp"
+                app:contentInsetEnd="0dp">
+                <TextView
+                    android:id="@+id/main_content_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/index_conversation_title_text"
+                    android:textColor="@color/iconTextColor"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/toolbar_center_title_size"/>
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/main_content_navigation_menu"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:background="?android:attr/windowBackground"
+            app:menu="@menu/app_main_menu"
+            android:layout_alignParentBottom="true"/>
+
+        <com.github.youchatproject.view.NoScrollViewPager
+            android:id="@+id/main_content_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/main_content_toolbar_layout"
+            android:layout_above="@id/main_content_navigation_menu">
+        </com.github.youchatproject.view.NoScrollViewPager>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

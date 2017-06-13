@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/main_menu_conversation" android:icon="@drawable/vector_drawable_main_chat_logo"
+        android:title="@string/index_conversation_title_text" />
+
+    <item android:id="@+id/main_menu_friends" android:icon="@drawable/vector_drawable_main_friend_logo"
+        android:title="@string/index_friend_title_text" />
+
+    <item android:id="@+id/main_menu_dynamic"
+        android:icon="@drawable/vector_drawable_main_dynamic_logo"
+        android:title="@string/index_dynamic_title_text" />
+
+</menu>

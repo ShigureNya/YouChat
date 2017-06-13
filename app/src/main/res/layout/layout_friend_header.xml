@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="85dp"
+    android:orientation="vertical"
+    android:background="@drawable/conversation_item_drawable">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/friend_header_group"
+        android:foreground="?attr/selectableItemBackground">
+        <ImageView
+            android:id="@+id/friend_group_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/vector_drawable_main_friend_group_logo"/>
+        <TextView
+            android:id="@+id/friend_group_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/friend_group_img"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:textSize="@dimen/default_main_text_size"
+            android:textColor="@color/mainTextColor"
+            android:text="@string/idnex_friend_group_title"/>
+
+        <TextView
+            android:id="@+id/friend_group_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/secondTextColor"
+            android:text="@string/index_friend_group_piece_text"
+            android:textSize="@dimen/default_second_text_size"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/defaultLineColor"
+        android:textColor="@color/iconTextColor"
+        android:text="好友列表"
+        android:textSize="13dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"/>
+</LinearLayout>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SignActivity"
+        android:fitsSystemWindows="true"
+        android:background="@color/defaultBackgroundColor">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/sign_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:navigationIcon="@drawable/vector_drawable_toolbar_back_logo"
+                app:contentInsetLeft="0dp"
+                app:elevation="0dp"
+                app:contentInsetStart="0dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sign_text"
+                    android:textColor="@color/iconTextColor"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/toolbar_center_title_size"/>
+            </android.support.v7.widget.Toolbar>
+
+            <EditText
+                android:id="@+id/sign_input_phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_edit_height"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/default_edit_drawable"
+                android:drawableLeft="@drawable/vector_drawable_login_phone_logo"
+                android:drawablePadding="6dp"
+                android:ems="10"
+                android:hint="@string/sign_input_phone_number_hint"
+                android:inputType="phone"
+                android:maxWidth="11dp"
+                android:paddingLeft="12dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_edit_height"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                >
+                <Button
+                    android:id="@+id/sign_get_phone_code"
+                    android:layout_width="100dp"
+                    android:layout_height="@dimen/default_edit_height"
+                    android:background="@drawable/send_message_code_drawable"
+                    android:text="@string/sign_get_phone_code_button_text"
+                    android:textSize="@dimen/default_second_text_size"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/mainTextColor"/>
+
+                <EditText
+                    android:id="@+id/sign_input_phone_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/default_edit_height"
+                    android:background="@drawable/default_edit_drawable"
+                    android:drawableLeft="@drawable/vector_drawable_sign_sms_logo"
+                    android:drawablePadding="6dp"
+                    android:ems="10"
+                    android:hint="@string/sign_input_phone_code_hint"
+                    android:maxWidth="6dp"
+                    android:paddingLeft="12dp"
+                    android:singleLine="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/sign_get_phone_code"
+                    android:layout_marginRight="15dp"/>
+            </RelativeLayout>
+            <EditText
+                android:id="@+id/sign_input_password"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/default_edit_drawable"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:drawableLeft="@drawable/vector_drawable_login_password_logo"
+                android:paddingLeft="12dp"
+                android:drawablePadding="6dp"
+                android:hint="@string/sign_input_password_hint"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"/>
+
+            <Button
+                android:id="@+id/sign_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/sign_button_drawable"
+                android:text="@string/sign_text"
+                android:textColor="@color/iconTextColor"
+                style="?attr/borderlessButtonStyle"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:foreground="?attr/selectableItemBackground"/>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/sign_disclaimer_text"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"/>
+
+        </LinearLayout>
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/sign_snackBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+        </android.support.design.widget.CoordinatorLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

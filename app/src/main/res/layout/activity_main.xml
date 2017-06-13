@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/main_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="left"
+        android:background="@color/defaultBackgroundColor">
+
+        <include layout="@layout/activity_main_content" android:layout_width="match_parent" android:layout_height="match_parent"/>
+        <android.support.design.widget.NavigationView
+            android:id="@+id/main_navigation"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:theme="@style/NavigationStyle"
+            app:itemTextColor="@color/navigation_item_color"
+            app:menu="@menu/app_navigation_menu"
+            app:headerLayout="@layout/layout_header"
+            android:background="@color/chat_functions_background_color">
+        </android.support.design.widget.NavigationView>
+    </android.support.v4.widget.DrawerLayout>
+</layout>
