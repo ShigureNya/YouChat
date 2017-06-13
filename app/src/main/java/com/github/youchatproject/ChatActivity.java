@@ -329,6 +329,7 @@ public class ChatActivity extends BaseActivity implements TextWatcher , EMMessag
     public void resultMessage(EMMessage message , int type) {
         if(type == OnFragmentResultListener.TYPE_VOICE){
             mAdapter.addMessage(message);
+            scrollInBottom();
         }
     }
 }

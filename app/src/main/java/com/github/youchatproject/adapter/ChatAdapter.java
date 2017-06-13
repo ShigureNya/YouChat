@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -13,7 +14,12 @@ import com.github.youchatproject.R;
 import com.github.youchatproject.bmob_im.MessageUtil;
 import com.github.youchatproject.tools.Loger;
 import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMFileMessageBody;
+import com.hyphenate.chat.EMImageMessageBody;
 import com.hyphenate.chat.EMMessage;
+import com.hyphenate.chat.EMTextMessageBody;
+import com.hyphenate.chat.EMVideoMessageBody;
+import com.hyphenate.chat.EMVoiceMessageBody;
 
 import java.util.List;
 
@@ -63,9 +69,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageHolder>
         Loger.i("onBindViewHolder");
         EMMessage msg = mMessageList.get(position);
         String conversationId = msg.getFrom();
-        holder.chatItemImage.setTag(conversationId);
-        if (holder.chatItemImage.getTag() == conversationId) {
-            MessageUtil.getInstance().handleMessagesType(msg, holder.chatItemImage, holder.chatItemMessage);
+        holder.chatItemLayout.setTag(conversationId);
+        if (holder.chatItemLayout.getTag() == conversationId) {
+            handleMessagesType(msg, holder);
         }
     }
 
@@ -102,10 +108,63 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageHolder>
         TextView chatItemMessage;
         @InjectView(R.id.chat_item_layout)
         RelativeLayout chatItemLayout;
+        @InjectView(R.id.chat_item_text_message_layout)
+        LinearLayout chatItemTextMessageLayout ;
+        @InjectView(R.id.chat_item_voice_message_layout)
+        RelativeLayout chatItemVoiceMessageLayout ;
+        @InjectView(R.id.chat_item_voice_img)
+        ImageView chatItemVoiceImage ;
+        @InjectView(R.id.chat_item_voice_duration)
+        TextView chatItemVoiceDuration ;
 
         public MessageHolder(View view) {
             super(view);
             ButterKnife.inject(this, view);
+        }
+    }
+
+
+    /**
+     * [处理消息类型的方法]
+     * @param msg 消息对象
+     * @param holder 控制器对象
+     */
+    public void handleMessagesType(EMMessage msg, MessageHolder holder){
+        switch(msg.getType()){
+            //图片消息
+            case IMAGE:{
+                holder.chatItemTextMessageLayout.setVisibility(View.VISIBLE);
+                holder.chatItemImage.setVisibility(View.VISIBLE);
+                holder.chatItemMessage.setVisibility(View.GONE);
+                EMImageMessageBody imageBody = (EMImageMessageBody) msg.getBody();
+                String url = imageBody.getThumbnailUrl();
+                Loger.i("图像地址",url);
+                break;
+            }
+            case TXT:{
+                holder.chatItemTextMessageLayout.setVisibility(View.VISIBLE);
+                holder.chatItemImage.setVisibility(View.GONE);
+                holder.chatItemMessage.setVisibility(View.VISIBLE);
+                EMTextMessageBody txtBody = (EMTextMessageBody) msg.getBody();
+                String content = txtBody.getMessage();
+                holder.chatItemMessage.setText(content);
+                break;
+            }
+            case FILE:
+                EMFileMessageBody fileBody = (EMFileMessageBody) msg.getBody();
+
+                break;
+            case VOICE:
+                holder.chatItemTextMessageLayout.setVisibility(View.GONE);
+                holder.chatItemVoiceMessageLayout.setVisibility(View.VISIBLE);
+                EMVoiceMessageBody voiceMessageBody = (EMVoiceMessageBody) msg.getBody();
+                int duraton = voiceMessageBody.getLength();
+                holder.chatItemVoiceDuration.setText(String.valueOf(duraton)+"s");
+                break;
+            case VIDEO:
+                EMVideoMessageBody videoMessageBody = (EMVideoMessageBody) msg.getBody();
+
+                break;
         }
     }
 }

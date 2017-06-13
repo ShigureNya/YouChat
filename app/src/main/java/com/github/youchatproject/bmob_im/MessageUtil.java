@@ -1,19 +1,9 @@
 package com.github.youchatproject.bmob_im;
 
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.github.youchatproject.listener.OnMessageListResultListener;
-import com.github.youchatproject.tools.Loger;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
-import com.hyphenate.chat.EMFileMessageBody;
-import com.hyphenate.chat.EMImageMessageBody;
 import com.hyphenate.chat.EMMessage;
-import com.hyphenate.chat.EMTextMessageBody;
-import com.hyphenate.chat.EMVideoMessageBody;
-import com.hyphenate.chat.EMVoiceMessageBody;
 
 import java.util.List;
 
@@ -101,45 +91,6 @@ public class MessageUtil {
         }
     }
 
-    /**
-     * [处理消息类型的方法]
-     * @param msg 消息对象
-     * @param messageImage 图片消息控件
-     * @param messageText 文本消息控件
-     */
-    public void handleMessagesType(EMMessage msg, ImageView messageImage , TextView messageText){
-        switch(msg.getType()){
-            //图片消息
-            case IMAGE:{
-                messageImage.setVisibility(View.VISIBLE);
-                messageText.setVisibility(View.GONE);
-                EMImageMessageBody imageBody = (EMImageMessageBody) msg.getBody();
-                String url = imageBody.getThumbnailUrl();
-                Loger.i("图像地址",url);
-                break;
-            }
-            case TXT:{
-                messageImage.setVisibility(View.GONE);
-                messageText.setVisibility(View.VISIBLE);
-                EMTextMessageBody txtBody = (EMTextMessageBody) msg.getBody();
-                String content = txtBody.getMessage();
-                messageText.setText(content);
-                break;
-            }
-            case FILE:
-                EMFileMessageBody fileBody = (EMFileMessageBody) msg.getBody();
-
-                break;
-            case VOICE:
-                EMVoiceMessageBody voiceMessageBody = (EMVoiceMessageBody) msg.getBody();
-
-                break;
-            case VIDEO:
-                EMVideoMessageBody videoMessageBody = (EMVideoMessageBody) msg.getBody();
-
-                break;
-        }
-    }
 
     /**
      * [存储聊天记录到数据库]
