@@ -1,6 +1,7 @@
 package com.github.youchatproject.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +10,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.youchatproject.R;
 import com.github.youchatproject.bmob_im.MessageUtil;
 import com.github.youchatproject.tools.Loger;
+import com.github.youchatproject.tools.VoiceUtil;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMFileMessageBody;
 import com.hyphenate.chat.EMImageMessageBody;
@@ -25,6 +28,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import me.himanshusoni.chatmessageview.ChatMessageView;
 
 /**
  * 作者： guhaoran
@@ -54,7 +58,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageHolder>
 
     @Override
     public MessageHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Loger.i("onCreateViewHolder");
         View view = null;
         if (viewType == MINE_MESSAGE) {
             view = mInflater.inflate(R.layout.layout_chat_mine, parent, false);
@@ -66,7 +69,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageHolder>
 
     @Override
     public void onBindViewHolder(MessageHolder holder, int position) {
-        Loger.i("onBindViewHolder");
         EMMessage msg = mMessageList.get(position);
         String conversationId = msg.getFrom();
         holder.chatItemLayout.setTag(conversationId);
@@ -77,7 +79,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageHolder>
 
     @Override
     public int getItemViewType(int position) {
-        Loger.i("getItemViewType");
         EMMessage message = mMessageList.get(position);
         if (message.getFrom().equals(currentUserId)) {
             //如果是自己发送的消息
@@ -91,7 +92,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageHolder>
     public void addMessage(EMMessage message) {
         mMessageList.add(message);
         notifyItemInserted(mMessageList.size() - 1);
-        Loger.i("AddMessage");
+
     }
 
     public void saveMessagesToDatabase(){
@@ -99,7 +100,20 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageHolder>
         Loger.i("消息已存入数据库");
     }
 
-    public class MessageHolder extends RecyclerView.ViewHolder {
+    public boolean isScrollToButton(RecyclerView recyclerView){
+        RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+        int lastPosition = ((LinearLayoutManager) layoutManager).findLastVisibleItemPosition();
+        Loger.i("可见的最后一个下标:",lastPosition+"");
+        int listLastCount = recyclerView.getLayoutManager().getItemCount()-1;
+        Loger.i("当前列表的最后一个下标:",listLastCount+"");
+        if(lastPosition == listLastCount){
+            return true ;
+        }else{
+            return false ;
+        }
+    }
+
+    public class MessageHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @InjectView(R.id.chat_item_user_image)
         ImageView chatItemUserImage;
         @InjectView(R.id.chat_item_image)
@@ -116,10 +130,18 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageHolder>
         ImageView chatItemVoiceImage ;
         @InjectView(R.id.chat_item_voice_duration)
         TextView chatItemVoiceDuration ;
+        @InjectView(R.id.chat_item_message_layout)
+        ChatMessageView chatItemMessageLayout ;
 
         public MessageHolder(View view) {
             super(view);
             ButterKnife.inject(this, view);
+            chatItemMessageLayout.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            handlerClickItem(v, getAdapterPosition());
         }
     }
 
@@ -158,11 +180,36 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageHolder>
                 holder.chatItemTextMessageLayout.setVisibility(View.GONE);
                 holder.chatItemVoiceMessageLayout.setVisibility(View.VISIBLE);
                 EMVoiceMessageBody voiceMessageBody = (EMVoiceMessageBody) msg.getBody();
+                VoiceUtil.getInstance().saveVoice(voiceMessageBody);    //对语音进行存储
                 int duraton = voiceMessageBody.getLength();
                 holder.chatItemVoiceDuration.setText(String.valueOf(duraton)+"s");
                 break;
             case VIDEO:
                 EMVideoMessageBody videoMessageBody = (EMVideoMessageBody) msg.getBody();
+
+                break;
+        }
+    }
+
+    /**
+     * 处理点击事件
+     * @param position 下标
+     */
+    public void handlerClickItem(View v , int position){
+        EMMessage msg = mMessageList.get(position);
+        switch (msg.getType()){
+            case VOICE:
+                //从Voice对象中取出local信息
+                EMVoiceMessageBody body = (EMVoiceMessageBody) msg.getBody();
+                String localUrl = body.getLocalUrl();
+                if(!localUrl.trim().equals("")) {
+                    Loger.i(localUrl);
+                    VoiceUtil.getInstance().playVoice(localUrl);
+                }else{
+                    Toast.makeText(mContext, "语音播放失败", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case IMAGE:
 
                 break;
         }

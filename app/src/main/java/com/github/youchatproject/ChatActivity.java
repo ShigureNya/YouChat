@@ -82,6 +82,7 @@ public class ChatActivity extends BaseActivity implements TextWatcher , EMMessag
         chatBinding.chatInputMessage.addTextChangedListener(this);
         initChatAdapter();  //初始化聊天适配器
         setChatFunctionsHeight();   //设置功能菜单高度
+        setKeyBroadShowing();   //设置键盘弹出监听
     }
 
     @Override
@@ -144,6 +145,25 @@ public class ChatActivity extends BaseActivity implements TextWatcher , EMMessag
         }, 300);
     }
 
+    /**
+     * [设置键盘弹出监听]
+     */
+    public void setKeyBroadShowing(){
+        KeyBoardUtil.setListener(this, new KeyBoardUtil.OnSoftKeyBoardChangeListener() {
+            @Override
+            public void keyBoardShow(int height) {
+                //如果滚动条在最底部 则在弹出键盘时，将列表拉至最底部
+                if(!mAdapter.isScrollToButton(chatBinding.chatMessageList)){
+                    scrollInBottom();
+                }
+            }
+
+            @Override
+            public void keyBoardHide(int height) {
+
+            }
+        });
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.chat_menu, menu);
@@ -180,6 +200,7 @@ public class ChatActivity extends BaseActivity implements TextWatcher , EMMessag
             List<EMMessage> messages = (List<EMMessage>) msg.obj;
             for (EMMessage emMessage : messages) {
                 Loger.i("新消息:" + emMessage.getUserName());
+                //将消息存入Adapter
                 mAdapter.addMessage(emMessage);
                 //标记为已读
                 emConversation.markMessageAsRead(emMessage.getMsgId());
@@ -267,7 +288,12 @@ public class ChatActivity extends BaseActivity implements TextWatcher , EMMessag
      * 滑动至最底部
      */
     public void scrollInBottom(){
-        chatBinding.chatMessageList.scrollToPosition(mAdapter.getItemCount() - 1);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                chatBinding.chatMessageList.scrollToPosition(mAdapter.getItemCount() - 1);
+            }
+        },100);
     }
 
     /**
@@ -325,6 +351,7 @@ public class ChatActivity extends BaseActivity implements TextWatcher , EMMessag
         //消息状态变动
     }
 
+    //***从Fragment回掉的消息对象
     @Override
     public void resultMessage(EMMessage message , int type) {
         if(type == OnFragmentResultListener.TYPE_VOICE){
@@ -332,4 +359,5 @@ public class ChatActivity extends BaseActivity implements TextWatcher , EMMessag
             scrollInBottom();
         }
     }
+
 }

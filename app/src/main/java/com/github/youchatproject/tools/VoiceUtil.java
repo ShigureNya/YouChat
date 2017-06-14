@@ -2,10 +2,12 @@ package com.github.youchatproject.tools;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 
 import com.github.youchatproject.system.FileStorageInfo;
 import com.github.youchatproject.system.MD5Util;
+import com.hyphenate.chat.EMVoiceMessageBody;
 
 import java.io.File;
 import java.io.IOException;
@@ -131,5 +133,52 @@ public class VoiceUtil {
             voiceTimer = null ;
         }
         return voiceDuration;
+    }
+
+
+    public void saveVoice(final EMVoiceMessageBody voiceMessageBody){
+        String fileName = voiceMessageBody.getFileName();
+        File file = new File(FileStorageInfo.getInstance().getVoiceDirName(),fileName);
+        //如果不存在 则去下载
+        if(!file.exists()){
+            String remoteUrl = voiceMessageBody.getRemoteUrl();
+            final String filePath = file.getAbsolutePath();
+            DownloadUtil.getInstance().download(remoteUrl, filePath, fileName, new DownloadUtil.OnDownloadResultListener() {
+                @Override
+                public void onDownloadSuccess() {
+                    Loger.i("下载成功");
+                    voiceMessageBody.setLocalUrl(filePath);
+                }
+
+                @Override
+                public void onDownloading(int progress) {
+
+                }
+
+                @Override
+                public void onDownloadFailed() {
+                    Loger.e("下载失败");
+                    voiceMessageBody.setLocalUrl("");
+                }
+            });
+        }else{
+            voiceMessageBody.setLocalUrl(file.getAbsolutePath());
+        }
+        //如果存在，则点击可直接进行文件读取
+    }
+
+    /**
+     * 播放语音
+     * @param path 语音地址
+     */
+    public void playVoice(String path){
+        MediaPlayer mediaPlayer = new MediaPlayer();
+        try {
+            mediaPlayer.setDataSource(path);
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -13,6 +13,7 @@
         android:src="@mipmap/admin"
         android:layout_alignParentRight="true"/>
     <me.himanshusoni.chatmessageview.ChatMessageView
+        android:id="@+id/chat_item_message_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cmv_arrowMargin="7dp"

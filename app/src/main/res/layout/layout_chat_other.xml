@@ -12,6 +12,7 @@
         android:layout_height="50dp"
         android:src="@mipmap/admin"/>
     <me.himanshusoni.chatmessageview.ChatMessageView
+        android:id="@+id/chat_item_message_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cmv_arrowMargin="7dp"
