@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.youchatproject.R;
 import com.github.youchatproject.bmob_im.MessageUtil;
@@ -180,7 +179,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageHolder>
                 holder.chatItemTextMessageLayout.setVisibility(View.GONE);
                 holder.chatItemVoiceMessageLayout.setVisibility(View.VISIBLE);
                 EMVoiceMessageBody voiceMessageBody = (EMVoiceMessageBody) msg.getBody();
-                VoiceUtil.getInstance().saveVoice(voiceMessageBody);    //对语音进行存储
                 int duraton = voiceMessageBody.getLength();
                 holder.chatItemVoiceDuration.setText(String.valueOf(duraton)+"s");
                 break;
@@ -201,13 +199,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MessageHolder>
             case VOICE:
                 //从Voice对象中取出local信息
                 EMVoiceMessageBody body = (EMVoiceMessageBody) msg.getBody();
-                String localUrl = body.getLocalUrl();
-                if(!localUrl.trim().equals("")) {
-                    Loger.i(localUrl);
-                    VoiceUtil.getInstance().playVoice(localUrl);
-                }else{
-                    Toast.makeText(mContext, "语音播放失败", Toast.LENGTH_SHORT).show();
-                }
+                VoiceUtil.getInstance().saveVoice(mContext,body);    //对语音进行存储
                 break;
             case IMAGE:
 

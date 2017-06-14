@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.widget.Toast;
 
 import com.github.youchatproject.system.FileStorageInfo;
 import com.github.youchatproject.system.MD5Util;
@@ -136,7 +137,7 @@ public class VoiceUtil {
     }
 
 
-    public void saveVoice(final EMVoiceMessageBody voiceMessageBody){
+    public void saveVoice(final Context mContext , final EMVoiceMessageBody voiceMessageBody){
         String fileName = voiceMessageBody.getFileName();
         File file = new File(FileStorageInfo.getInstance().getVoiceDirName(),fileName);
         //如果不存在 则去下载
@@ -145,9 +146,8 @@ public class VoiceUtil {
             final String filePath = file.getAbsolutePath();
             DownloadUtil.getInstance().download(remoteUrl, filePath, fileName, new DownloadUtil.OnDownloadResultListener() {
                 @Override
-                public void onDownloadSuccess() {
-                    Loger.i("下载成功");
-                    voiceMessageBody.setLocalUrl(filePath);
+                public void onDownloadSuccess(String path) {
+                    VoiceUtil.getInstance().playVoice(path);
                 }
 
                 @Override
@@ -157,28 +157,60 @@ public class VoiceUtil {
 
                 @Override
                 public void onDownloadFailed() {
-                    Loger.e("下载失败");
-                    voiceMessageBody.setLocalUrl("");
+                    Toast.makeText(mContext, "语音播放失败", Toast.LENGTH_SHORT).show();
                 }
             });
         }else{
-            voiceMessageBody.setLocalUrl(file.getAbsolutePath());
+            VoiceUtil.getInstance().playVoice(file.getAbsolutePath());
         }
         //如果存在，则点击可直接进行文件读取
     }
 
+    private MediaPlayer mediaPlayer = null ;
     /**
      * 播放语音
      * @param path 语音地址
      */
     public void playVoice(String path){
-        MediaPlayer mediaPlayer = new MediaPlayer();
+        if (mediaPlayer == null) {
+            mediaPlayer = new MediaPlayer();
+        }
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mediaPlayer.stop();
+                try {
+                    mediaPlayer.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mediaPlayer.reset();
+            }
+        });
         try {
+            //如果当前mediaPlayer正在播放
+            if(mediaPlayer.isPlaying()){
+                mediaPlayer.stop();
+                mediaPlayer.prepare();
+                mediaPlayer.reset();
+            }
             mediaPlayer.setDataSource(path);
             mediaPlayer.prepare();
             mediaPlayer.start();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void mediaPlayerDestroy()  {
+        if(mediaPlayer != null){
+            try {
+                mediaPlayer.stop();
+                mediaPlayer.prepare();
+                mediaPlayer.reset();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

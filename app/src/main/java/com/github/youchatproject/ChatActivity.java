@@ -28,6 +28,7 @@ import com.github.youchatproject.listener.OnFragmentResultListener;
 import com.github.youchatproject.listener.OnMessageListResultListener;
 import com.github.youchatproject.tools.KeyBoardUtil;
 import com.github.youchatproject.tools.Loger;
+import com.github.youchatproject.tools.VoiceUtil;
 import com.github.youchatproject.view.BaseActivity;
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
@@ -223,6 +224,13 @@ public class ChatActivity extends BaseActivity implements TextWatcher , EMMessag
         super.onResume();
         $Log("聊天服务已开始");
         EMClient.getInstance().chatManager().addMessageListener(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        //在Activity暂停或者切换到别的状态的时候停止语音播放
+        VoiceUtil.getInstance().mediaPlayerDestroy();
     }
 
     /**

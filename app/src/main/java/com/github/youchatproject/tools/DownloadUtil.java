@@ -64,7 +64,7 @@ public class DownloadUtil {
                     }
                     fos.flush();
                     // 下载完成
-                    listener.onDownloadSuccess();
+                    listener.onDownloadSuccess(file.getAbsolutePath());
                 } catch (Exception e) {
                     listener.onDownloadFailed();
                 } finally {
@@ -87,7 +87,7 @@ public class DownloadUtil {
         /**
          * 下载成功
          */
-        void onDownloadSuccess();
+        void onDownloadSuccess(String path);
 
         /**
          * @param progress
